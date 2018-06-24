@@ -26,10 +26,10 @@ Cada um destes módulos tinha uma base de dados onde a informação é persistid
 
 Este projeto em grande parte foi principalmente a implementação de testes unitários e na parte final do mesmo (parte 5) foi também sujeito a testes de carga com recurso à ferramenta Jmeter.
 
-Como correr o Projeto:
-1º Passo: Abrir a parte 4 do projeto.
-2º Passo: Abrir 6 terminais, cada um deles dentro da diretoria de um módulos.
-3º Passo: Montar a base de dados recorrendo a MySQL.
-4º Passo: Correr o comando mvn install na diretoria raiz do projeto.
-3º Passo: Correr o comando em cada terminal mvn clean spring-boot:run
-4º Passo: Interagir com o projeto através de um browser colocando como endereço http://localhost:[PortoDoMódulo]
+Como correr o Projeto:  
+1º Passo: Abrir a parte 4 do projeto;  
+2º Passo: Abrir 6 terminais, cada um deles dentro da diretoria de um módulos;  
+3º Passo: Montar a base de dados recorrendo a MySQL;  
+4º Passo: Correr o comando mvn install na diretoria raiz do projeto;  
+5º Passo: Correr o comando em cada terminal mvn clean spring-boot:run;  
+6º Passo: Interagir com o projeto através de um browser colocando como endereço http://localhost:[PortoDoMódulo];  
