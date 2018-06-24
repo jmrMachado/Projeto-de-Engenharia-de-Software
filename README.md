@@ -2,6 +2,10 @@
 Projeto realizado no âmbito da cadeira de Engenharia de Software no ano letivo de 2017/2018. Membros do grupo que desenvolveram o projeto:
 - Pedro Maria;
 - Dário Sá;
+- Marco Coelho;
+- Inês Vilhena;
+- Daniela Rodrigues;
+- João Machado;
 
 
 Este projeto tinha como objetivo a implementação, em linguagem Java, de um sistema de reserva de atividades (Como por exemplo a atual aplicação Trivago). O projeto era composto por vários módulos sendo cada um deles descritos em baixo:
