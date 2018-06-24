@@ -38,12 +38,12 @@ Este projeto em grande parte foi principalmente a implementação de testes unit
 
 # Software Engineering Project
 This project was made for the course of Software Engineering, 2017/2018. Members that helped in the development of the project:
--Pedro Maria;
--Marco Coelho;
--Dário de Sá;
--João Machado;
--Inês Vilhena;
--Daniela Rodrigues;
+- Pedro Maria;
+- Marco Coelho;
+- Dário de Sá;
+- João Machado;
+- Inês Vilhena;
+- Daniela Rodrigues;
 
 The objective of this project was to implement, in Java, an activity reservation system (Like Trivago for exemple). The project was composed of several modules, each one described below:
 Car Module: This module is responsible for the reservation of a vehicle in case this was requested by the client who booked the adventure.
