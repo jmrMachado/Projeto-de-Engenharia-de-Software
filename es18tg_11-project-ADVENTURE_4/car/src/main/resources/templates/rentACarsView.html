@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>RentACars Manager Welcome</title>
+    <link rel="stylesheet"
+          th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" />
+
+    <script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <h2>Welcome to RentACars' Manager</h2>
+        </div>
+        <div class="row">
+            <h3>Create RentACar</h3>
+        </div>
+        <div class="row">
+            <p class="text-danger col-md-6" th:text="${error}">Error</p>
+        </div>
+        <div class="row">
+            <form class="form-inline" th:action="@{/rentACars}"
+                  th:object="${rentACar}" method="post">
+                <div class="form-group">
+                    <label>Name: </label> <input class="form-control" type="text"
+                                                 th:field="*{name}" placeholder="Name" />
+                </div>
+                <div class="form-group">
+                    <label>NIF: </label> <input class="form-control" type="text"
+                                                 th:field="*{nif}" placeholder="NIF"/>
+                </div>
+                <div class="form-group">
+                    <label>IBAN: </label> <input class="form-control" type="text"
+                                                 th:field="*{iban}" placeholder="IBAN"/>
+                </div>
+                <div class="form-group">
+                    <input class="btn btn-primary" type="submit" value="Submit" />
+                </div>
+            </form>
+        </div>
+        <div class="row">
+            <h3>RentACars</h3>
+        </div>
+        <div class="row col-md-6">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Code</th>
+                    <th>NIF</th>
+                    <th>IBAN</th>
+                    <th>Page</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="rentACar: ${rentACars}">
+                    <td th:text="${rentACar.getName()}">Name</td>
+                    <td th:text="${rentACar.getCode()}">Code</td>
+                    <td th:text="${rentACar.getNif()}">NIF</td>
+                    <td th:text="${rentACar.getIban()}">IBAN</td>
+                    <td><a th:href="@{/rentACars/{code}(code=${rentACar.getCode()})}">Page</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

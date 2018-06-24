@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Tax Payers</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet"
+	th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" />
+<script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+</head>
+<body>
+	<div class="container">
+		<h2>
+			Welcome to Tax' Manager :p
+		</h2>
+		<a class="btn btn-default pull-right" th:href="@{/}">Index</a>
+
+		<p>	<a class="btn btn-default pull-right" href="/buyers">Create Buyer</a></p>
+		<p>	<a class="btn btn-default pull-right" href="/sellers">Create Seller</a></p>
+		<h3>List of TaxPayers</h3>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>NIF</th>
+					<th>Name</th>
+					<th>Address</th>					
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="taxPayer: ${taxPayers}">
+					<td th:text="${taxPayer.NIF}">NIF</td>
+					<td th:text="${taxPayer.name}">Name</td>
+					<td th:text="${taxPayer.address}">Address</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

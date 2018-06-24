@@ -1,0 +1,18 @@
+.classpath
+.project
+.settings
+target
+fenix-framework.properties
+jmeter.log
+*.jtl
+*.log
+infer-out
+<<<<<<< HEAD
+*.iml
+.idea
+.DS_Store
+fenix-framework.properties
+local.dev.yml
+=======
+.DS_Store
+>>>>>>> ref3

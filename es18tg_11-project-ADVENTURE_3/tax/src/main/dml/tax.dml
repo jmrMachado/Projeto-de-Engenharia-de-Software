@@ -1,0 +1,81 @@
+package pt.ulisboa.tecnico.softeng.tax.domain;
+
+
+
+class IRS;
+
+relation DomainRootHasIRSApplication {
+	.pt.ist.fenixframework.DomainRoot playsRole root {
+		multiplicity 1..1;
+	}
+	IRS playsRole irs{
+		multiplicity 0..1;
+	}
+}
+
+class TaxPayer {
+	String name;
+	String NIF;
+	String address;
+	int percentage;
+}
+
+class Seller extends TaxPayer;
+class Buyer extends TaxPayer;
+
+relation IRShasTaxPayer {
+	IRS playsRole irs;
+	TaxPayer playsRole taxpayer{multiplicity 0..*;}
+}
+
+class Invoice {
+	String reference;
+	LocalDate date;
+	double iva;
+	double value;
+	boolean cancelled;
+	int counter;
+	
+}
+
+relation InvoiceHasBuyer {
+	Invoice playsRole invoice{
+		multiplicity 0..*;
+	}
+	Buyer playsRole buyer{
+		multiplicity 1..1;
+	}
+}
+
+relation InvoiceHasSeller {
+	Invoice playsRole invoice{
+		multiplicity 0..*;
+	}
+	Seller playsRole seller{
+		multiplicity 1..1;
+	}
+}
+
+class ItemType{
+	String name;
+	int tax;
+
+}
+
+relation InvoiceHasItemType{
+	Invoice playsRole invoice {
+	multiplicity 0..*;
+	}
+	
+	ItemType playsRole itemtype{
+	multiplicity 1..1;
+	}
+}
+
+relation IRShasItemType{
+	IRS playsRole irs;
+	
+	ItemType playsRole itemtype {
+	multiplicity 0..*;
+	}
+}

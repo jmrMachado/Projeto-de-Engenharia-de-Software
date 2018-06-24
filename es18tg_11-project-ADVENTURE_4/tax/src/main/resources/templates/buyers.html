@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Tax Payers</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet"
+	th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" />
+<script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+</head>
+<body>
+	<div class="container">
+		<h2>
+			Buyer Creator :D
+		</h2>
+		<a class="btn btn-default pull-right" th:href="@{/taxPayers}">TaxPayers</a>
+		<br/>
+		<h3>Create Buyer</h3>
+		
+		
+		<p class="text-danger" th:text="${error}">Error</p>
+		<form class="form-inline" th:action="@{/buyers}" th:object="${buyer}" method="post">
+			<label>NIF: </label> <input class="form-control" type="text" th:field="*{NIF}" /> 
+			<label>name: </label> <input class="form-control" type="text" th:field="*{name}" />
+			<label>address: </label> <input class="form-control" type="text" th:field="*{address}" />
+			<input class="btn btn-primary" type="submit" value="Submit" />
+		</form>
+		<br/>
+		<h3>List of Buyers</h3>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>NIF</th>
+					<th>Name</th>
+					<th>Address</th>					
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="buyer: ${buyers}">
+					<td th:text="${buyer.NIF}">Name</td>
+					<td th:text="${buyer.name}">Code</td>
+					<td th:text="${buyer.address}">NIF</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

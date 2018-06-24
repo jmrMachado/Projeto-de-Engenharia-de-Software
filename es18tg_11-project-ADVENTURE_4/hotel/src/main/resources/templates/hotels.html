@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Hotels</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet"
+	th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" />
+<script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+</head>
+<body>
+	<div class="container">
+		<h2>
+			Welcome to Hotels' Manager
+		</h2>
+		<br/>
+		<h3>Create Hotel</h3>
+		<p class="text-danger" th:text="${error}">Error</p>
+		<form class="form-inline" th:action="@{/hotels}" th:object="${hotel}" method="post">
+			<label>Name: </label> <input class="form-control" type="text" th:field="*{name}" /> 
+			<label>Code: </label> <input class="form-control" type="text" th:field="*{code}" />
+			<label>NIF: </label> <input class="form-control" type="text" th:field="*{nif}" /> 
+			<label>IBAN: </label> <input class="form-control" type="text" th:field="*{iban}" />
+			<label>Single Room Price: </label> <input class="form-control" type="number" th:field="*{priceSingle}" /> 
+			<label>Double Room Price: </label> <input class="form-control" type="number" th:field="*{priceDouble}" />
+			
+			<input class="btn btn-primary" type="submit" value="Submit" />
+		</form>
+		<br/>
+		<h3>List of Hotels</h3>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Code</th>
+					<th>NIF</th>
+					<th>IBAN</th>
+					<th>Single Room Price</th>
+ 					<th>Double Room Price</th>
+					<th>Rooms</th>
+					
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="hotel: ${hotels}">
+					<td th:text="${hotel.name}">Name</td>
+					<td th:text="${hotel.code}">Code</td>
+					<td th:text="${hotel.nif}">NIF</td>
+					<td th:text="${hotel.iban}">IBAN</td>
+					<td th:text="${hotel.priceSingle}">Single Room Price</td>
+					<td th:text="${hotel.priceDouble}">Double Room Price</td>
+					
+				 	<td><a
+						th:href="@{/hotels/{code}/rooms(code=${hotel.code})}">Rooms</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

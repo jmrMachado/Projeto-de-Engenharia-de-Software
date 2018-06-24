@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>RentACars Manager Welcome</title>
+    <link rel="stylesheet"
+          th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" />
+
+    <script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div class="container">
+    <h2>
+        Welcome to RentACar <span th:text="${rentACar.getName()}">Name</span>
+    </h2>
+
+    <div class="row">
+        <p class="text-danger col-md-6" th:text="${error}">Error</p>
+    </div>
+
+    <div class="row">
+        <form class="form-inline" th:action="@{/rentACars/{code}(code=${rentACar.getCode()})}"
+              th:object="${vehicle}" method="post">
+            <div class="form-group">
+                <label>Plate: </label> <input class="form-control" type="text"
+                                             th:field="*{plate}" placeholder="..-..-.."/>
+            </div>
+            <div class="form-group">
+                <label>Kilometers: </label> <input class="form-control" type="text"
+                                            th:field="*{kilometers}" placeholder="Kilometers" />
+            </div>
+            <div class="form-group">
+                <label>Price: </label> <input class="form-control" type="text"
+                                                   th:field="*{price}" placeholder="Price"/>
+            </div>
+            <div class="form-group">
+                <label>Type: </label> <input class="form-control" type="text"
+                                             th:field="*{type}" placeholder="CAR or MOTORCYCLE"/>
+            </div>
+            <div class="form-group">
+                <input class="btn btn-primary" type="submit" value="Submit" />
+            </div>
+        </form>
+    </div>
+
+    <h3>Vehicles</h3>
+    <div class="row col-md-6">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Plate</th>
+                <th>Kilometers</th>
+                <th>Price</th>
+                <th>Type of Vehicle</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="vehicle: ${rentACar.getVehicles()}">
+                <td th:text="${vehicle.getPlate()}">Plate</td>
+                <td th:text="${vehicle.getKilometers()}">Kilometers</td>
+                <td th:text="${vehicle.getPrice()}">Price</td>
+                <td th:text="${vehicle.getType()}">Type</td>
+                <td><a th:href="@{/rentACars/{code}/{plate}(code=${rentACar.getCode()},plate=${vehicle.getPlate()})}">Rentings</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+</body>
+</html>
